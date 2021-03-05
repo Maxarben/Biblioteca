@@ -40,6 +40,10 @@ app.get('/book/:isbn', (req, res) => {
         }
     }
 
+    // Sending 404 when not found something is a good practice
+    res.status(404).send('Book not found');
+});
+
 app.delete('/book/:isbn', (req, res) => {
     // Reading isbn from the URL
     const isbn = req.params.isbn;
@@ -52,10 +56,7 @@ app.delete('/book/:isbn', (req, res) => {
         return false;
     });
 
-});
-
-    // Sending 404 when not found something is a good practice
-    res.status(404).send('Book not found');
+    res.send('Book is deleted');
 });
 
 app.listen(port, () => console.log(`Hello world app listening on port ${port}!`));

@@ -43,4 +43,14 @@ const loadBooks = () => {
     }
 }
 
+const deleteBook = (isbn) => {
+    const xhttp = new XMLHttpRequest();
+
+    xhttp.open("DELETE", `http://localhost:3000/book/${isbn}`, false);
+    xhttp.send();
+
+    // Reloading the page
+    location.reload();
+}
+
 loadBooks();
